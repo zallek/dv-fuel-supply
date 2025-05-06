@@ -5,6 +5,8 @@
 [![MIT License][license-shield]][license-url]
 
 
+**<!> DOES NOT WORK YET <!>**
+
 ## About The Project
 
 Fuel Supply is a Derail Valley mod that enhances the game's realism by implementing a dynamic fuel supply chain system:
