@@ -1,0 +1,9 @@
+{
+	"Id": "FuelSupply",
+	"Version": "1.0.0",
+	"DisplayName": "FuelSupply",
+	"Author": "MOD_AUTHOR",
+	"EntryMethod": "FuelSupply.Main.Load",
+	"ManagerVersion": "0.27.3",
+	"Repository": "https://raw.githubusercontent.com/OWNER/REPOSITORY/main/repository.json"
+}
