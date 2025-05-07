@@ -1,59 +1,35 @@
 using HarmonyLib;
-using UnityEngine;
 using DV.ThingTypes;
-namespace FuelSupply.Patches
+using UnityEngine;
+
+namespace FuelSupply.Patches;
+
+[HarmonyPatch(typeof(LocoResourceModule), nameof(LocoResourceModule.UpdateResourcePricePerUnit))]
+public static class LocoResourceModule_UpdateResourcePricePerUnit_Patch
 {
-    [HarmonyPatch(typeof(LocoResourceModule), nameof(LocoResourceModule.UpdateResourcePricePerUnit))]
-    public static class LocoResourceModule_UpdateResourcePricePerUnit_Patch
-    {
-        public static void Prefix(LocoResourceModule __instance, TrainCar trainCar, ref float newPricePerUnit)
-        {
-			ResourceType resourceType = __instance.resourceType;
-			if (resourceType != ResourceType.Fuel)
-			{
-				return;
-			}
+	public static void Prefix(LocoResourceModule __instance, TrainCar trainCar, ref float newPricePerUnit)
+	{
+		ResourceType resourceType = __instance.resourceType;
 
-			string pitStopName = __instance.transform.parent.parent.name;
-			float stationPriceFactor = 1.0f;
-			switch (pitStopName)
-			{
-				case "PitstopCoalMineEast":
-					stationPriceFactor = 1.2f;
-					break;
-				case "PitstopCitySouth":
-					stationPriceFactor = 1.2f;
-					break;
-				case "PitstopCityWest":
-					stationPriceFactor = 1.0f;
-					break;
-				case "PitstopFoodFactory":
-					stationPriceFactor = 1.0f;
-					break;
-				case "PitstopGoodsFactory":
-					stationPriceFactor = 1.1f;
-					break;
-				case "PitstopHarbor":
-					stationPriceFactor = 1.1f;
-					break;
-				case "PitstopMachineFactoryTown":
-					stationPriceFactor = 1.0f;
-					break;
-				case "PitstopOilRefinery":
-					stationPriceFactor = 0.8f;
-					break;
-				case "PitstopOilWellCentral":
-					stationPriceFactor = 1.2f;
-					break;
-				case "PitstopOilWellNorth":
-					stationPriceFactor = 1.2f;
-					break;
-				case "PitstopSteelMill":
-					stationPriceFactor = 1.1f;
-					break;
-			}
+		if (resourceType != ResourceType.Fuel)
+		{
+			return;
+		}
 
-			newPricePerUnit = newPricePerUnit * stationPriceFactor;
-        }
-    }
+		string pitStopName = __instance.transform.parent.parent.name;
+
+		newPricePerUnit = FuelPriceManager.Instance.GetPricePerUnitAtPitStop(pitStopName);
+	}
+}
+
+[HarmonyPatch(typeof(LocoResourceModule), "Update")]
+public static class LocoResourceModule_Update_Patch
+{
+	public static void Postfix(LocoResourceModule __instance, PitStopStation ___pitStopStation)
+	{
+		if (__instance.resourceType == ResourceType.Fuel)
+		{
+			__instance.UpdateResourcePricePerUnit(___pitStopStation.pitstop.CurrentCar, 0);
+		}
+	}
 }
