@@ -15,45 +15,45 @@ namespace FuelSupply.Patches
 			}
 
 			string pitStopName = __instance.transform.parent.parent.name;
-			float priceFactor = 1.0f;
+			float stationPriceFactor = 1.0f;
 			switch (pitStopName)
 			{
 				case "PitstopCoalMineEast":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.2f;
 					break;
 				case "PitstopCitySouth":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.2f;
 					break;
 				case "PitstopCityWest":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.0f;
 					break;
 				case "PitstopFoodFactory":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.0f;
 					break;
 				case "PitstopGoodsFactory":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.1f;
 					break;
 				case "PitstopHarbor":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.1f;
 					break;
 				case "PitstopMachineFactoryTown":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.0f;
 					break;
 				case "PitstopOilRefinery":
-					priceFactor = 1.0f;
+					stationPriceFactor = 0.8f;
 					break;
 				case "PitstopOilWellCentral":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.2f;
 					break;
 				case "PitstopOilWellNorth":
-					priceFactor = 1.0f;
+					stationPriceFactor = 1.2f;
 					break;
 				case "PitstopSteelMill":
-					priceFactor = 2.0f;
+					stationPriceFactor = 1.1f;
 					break;
 			}
 
-			newPricePerUnit = newPricePerUnit * priceFactor;
+			newPricePerUnit = newPricePerUnit * stationPriceFactor;
         }
     }
 }

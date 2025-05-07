@@ -1,7 +1,7 @@
 # Roadmap
 
 - [x] Set a fixed base price for diesel.
-- [ ] Adjust diesel prices per station based on proximity to the refinery (using a distance-based price factor).
+- [x] Adjust diesel prices per station based on proximity to the refinery (using a distance-based price factor).
 - [ ] Introduce time-based fluctuations in diesel prices (e.g., using a noisy sinusoidal pattern).
 - [ ] Enable visibility of diesel prices on computer systems.
 - [ ] Temporarily reduce local diesel prices when fuel is hauled to a station.
