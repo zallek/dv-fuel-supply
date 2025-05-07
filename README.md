@@ -9,12 +9,17 @@
 
 ## About The Project
 
-Fuel Supply is a Derail Valley mod that enhances the game's realism by implementing a dynamic fuel supply chain system:
+**Fuel Supply** adds a realistic fuel pricing system to Derail Valley.
+- Diesel prices vary by station distance from the refinery, fluctuate over time, and react to player fuel deliveries.
+- A new purchasable license allows viewing diesel prices on station computers for smarter refueling decisions.
 
-- Dynamic diesel pricing that fluctuates based on market supply and demand
-- Regional price variations where remote stations charge higher rates due to transportation costs
-- Limited fuel availability at stations that can deplete over time
-- Fuel resupply mechanics by completing fuel tanker wagons missions
+
+
+
+
+
+
+
 
 
 ## License
